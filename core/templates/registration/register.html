@@ -1,0 +1,21 @@
+{% extends 'index.html' %}
+{% load static %}
+{%block title%} Enregistrement {% endblock %}
+
+{% block content %}
+<center>
+    <div class="register">
+    <form method= "POST">
+       <br><br>
+         <div><h1 id="create">Créez vous un compte</h1><hr width="300px"><hr width="200px"><hr width="100px"> </div>
+       <div class="register-inter">
+       {% csrf_token %}
+    {{ form.as_p }}<br><br>
+    <button class="submit"> Soumettre</button>
+             </div>
+    </form>
+
+       </div>
+</center>
+
+{% endblock %}
