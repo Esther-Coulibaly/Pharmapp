@@ -1,0 +1,78 @@
+/* general*/
+html, body{
+    font-family: lucida sans;
+}
+/* Header */
+
+.overlay{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+header{
+    height: 70px;
+    padding: 0;
+    border-bottom: 1px solid #000;
+    position: relative;
+}
+header i.icon{
+    position: absolute;
+    right: 30px;
+    top: 10px;
+    z-index: 10;
+    display: none;
+}
+
+header nav .nav-list{
+    list-style: none;
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 5px;
+}
+header nav .nav-list .list a{
+    display: block;
+    padding: 25px;
+    margin: 9px;
+    text-decoration: none;
+    transition: all 0.3 ease-in-out;
+}
+header nav .nav-list .list a:hover{
+    color: #7cb62f;
+}
+
+
+
+.home{
+    height: 500px;
+    background-image: url('../image/Pharmacie.jpg');
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+.home .home-content{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.home .home-title{
+    color: #FFF;
+    font-size: 45px;
+    margin-bottom: 20px;
+}
+.home .home-dec{
+    color: white;
+    font-size: 20px;
+}
+.home .button{
+    background: #7cb62f;
+    color: white;
+    width: 150px;
+    text-align: Center;
+    padding: 1Opx 0;
+}

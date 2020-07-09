@@ -1,0 +1,52 @@
+.contact-form{
+    display: gird;
+    grid-template-columns: auto auto;
+}
+.form-info{
+    font-size: 16px;
+    font-style: italic;
+    color: #fff;
+    letter-spacing: 2px;
+}
+input{
+    padding: 10px;
+    margin: 10px;
+    width: 70%;
+    background-color: rgba(136,133,133,0.5);
+    color: #fff;
+    border: none;
+    outline: none;
+}
+input::placeholder{
+    color: #fff;
+}
+textarea{
+    padding: 10px;
+    margin: 10px;
+    width: 70%;
+    background-color: rgba(136,133,133,0.5);
+    color: #fff;
+    border: none;
+    outline: none;
+}
+textarea::placeholder{
+    color: #fff;
+}
+.submit{
+    width: 40%;
+    background: none;
+    padding: 4px;
+    outline: none;
+    font-size: 13px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    height: 33px;
+    text-align: center;
+    cursor: pointer;
+    border: 2px solid #000;
+    color: #000;
+}
+.te{
+    font-size: 35px;
+    color: #fff;
+}
