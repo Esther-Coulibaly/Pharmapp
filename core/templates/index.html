@@ -28,12 +28,12 @@
                 </div>
                 <nav class="col-md-9 col-xs-12">
                     <ul class="nav-list">
-                        <li class="list"> <a href="#">Gestion Inventaire</a> </li>
+                        <li class="list"> <a href="{% url 'sys_inventaire:index' %}">Gestion Inventaire</a> </li>
                         <li class="list"> <a href="#">Gestion Vente</a></li>
                         <li class="list"> <a href="#">Contact</a></li>
                         {% if user.username %}
                         <li class="list"> <a href="#">Hi, {{request.user.username}}</a></li>
-                        <li class="list"> <a href="#">Deconnexion</a></li>
+                        <li class="list"> <a href="{% url 'core:deconnexion' %}">Deconnexion</a></li>
                         {% else %}
                         <li class="list"> <a href="{% url 'core:connexion' %}">Se connecter</a></li>
                         {% endif %}

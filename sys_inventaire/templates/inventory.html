@@ -1,4 +1,46 @@
-{% block title %}Inventaire{% endblock %}
-{% block content %}
+{% extends 'index.html' %}
+{% block title %} Inventaire {% endblock %}
+{%block content%}
+<section class="sections home text-center">
+    <div class="overlay">
+        <br>
+                <div class="button-group">
+                    <a href="{% url 'sys_inventaire:medicament' %}" class="btn btn-primary btn-md" role="button">Medicaments</a>
+                    <a href="#" class="btn btn-warning btn-sm" role="button"> + </a>
 
+                    <a href="#" class="btn btn-primary btn-md" role="button">Parapharmacies</a>
+                    <a href="#" class="btn btn-warning btn-sm" role="button"> + </a>
+
+                    <a href="#" class="btn btn-primary btn-md" role="button">Petits materiels</a>
+                    <a href="#" class="btn btn-warning btn-sm" role="button"> + </a>
+
+                    <a href="#" class="btn btn-primary btn-md" role="button">Diététiques</a>
+                    <a href="#" class="btn btn-warning btn-sm" role="button"> + </a>
+                </div>
+                <br>
+                <table class="table">
+                    <thead class="thead-dark">
+                      <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Spécialité</th>
+                        <th scope="col">DCI</th>
+                        <th scope="col">Prix</th>
+                        <th scope="col">Quantite</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                        {% for item in items %}
+                      <tr>
+                        <th scope="row">{{ item.pk }}</th>
+                        <td>{{ item.specialite }}</td>
+                        <td>{{ item.dci }}</td>
+                        <td>{{ item.prix }}</td>
+                        <td>{{ item.quantite }}</td>
+                      </tr>
+                      {% endfor %}                        
+                    </tbody>
+                </table>
+    </div>
+    
+</section>
 {% endblock %}

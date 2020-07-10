@@ -45,6 +45,7 @@ header .logo a {
 .footer .footer-content{
     height: 200px;
     display: flex;
+    padding-left: O;
 }
 
 .footer .footer-content .contact .contact-input{

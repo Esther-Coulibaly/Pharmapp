@@ -4,5 +4,6 @@ from .views import *
 app_name = 'sys_inventaire'
 
 urlpatterns = [
-    path('', index, name='index')
+    path('', index, name='index'), 
+    path('medicaments/', montrer_medicament, name='medicament')
 ]
