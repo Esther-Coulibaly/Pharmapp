@@ -1,72 +1,122 @@
-{% extends 'index.html' %}
-{% block title %} Inventaire {% endblock %}
-{%block content%}
-<section class="sections home text-center">
-    <div class="overlay">
-        <br>
-        
-                <div class="button-group">
-                    <a href="{% url 'sys_inventaire:medicament' %}" class="btn btn-primary btn-md" role="button">Medicaments</a>
-                    <a href="#" class="btn btn-warning btn-sm" role="button"> + </a>
-
-                    <a href="{% url 'sys_inventaire:paraphamacies' %}" class="btn btn-primary btn-md" role="button">Parapharmacies</a>
-                    <a href="#" class="btn btn-warning btn-sm" role="button"> + </a>
-
-                    <a href="{% url 'sys_inventaire:pti_materiel' %}" class="btn btn-primary btn-md" role="button">Petits materiels</a>
-                    <a href="#" class="btn btn-warning btn-sm" role="button"> + </a>
-
-                    <a href="{% url 'sys_inventaire:dietetiques' %}" class="btn btn-primary btn-md" role="button">Diététiques</a>
-                    <a href="#" class="btn btn-warning btn-sm" role="button"> + </a>
-                </div>
-                <br>
-                {% if header %}
-                <table class="table">
-                    <thead class="thead-dark">
-                      <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Spécialité</th>
-                        <th scope="col">DCI</th>
-                        <th scope="col">Prix</th>
-                        <th scope="col">Quantite</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                        {% for item in items %}
-                      <tr>
-                        <th scope="row">{{ item.pk }}</th>
-                        <td>{{ item.specialite }}</td>
-                        <td>{{ item.dci }}</td>
-                        <td>{{ item.prix }}</td>
-                        <td>{{ item.quantite }}</td>
-                      </tr>
-                      {% endfor %}                        
-                    </tbody>
-                </table>
-                {% else %}
-                <table class="table">
-                  <thead class="thead-dark">
-                    <tr>
-                      <th scope="col">#</th>                      
-                      <th scope="col">DCI</th>
-                      <th scope="col">Prix</th>
-                      <th scope="col">Quantite</th>
-                      <th scope="col">date per</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                      {% for item in items %}
-                    <tr>
-                      <th scope="row">{{ item.pk }}</th>
-                      <td>{{ item.nom_article }}</td>                      
-                      <td>{{ item.prix }}</td>
-                      <td>{{ item.quantite }}</td>
-                      <td>{{ item.date_peremption }}</td>
-                    </tr>
-                    {% endfor %}                        
-                  </tbody>
-              </table>
-                {% endif %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  {% load static %}
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="{% static '/css/bootstrap.css' %}">
+  <link rel="stylesheet" href="{% static '/css/bootstrap.min.css' %}">
+  <link rel="stylesheet" href="{% static '/css/style-inventaire.css' %}">
+  <script src="https://kit.fontawesome.com/3f99847030.js" crossorigin="anonymous"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inventaire</title>
+</head>
+<body>
+<div class="wrapper">
+  <div class="sidebar">
+    <h2>PHarM<span>App</span></h2>
+    <ul>
+      <li><a href="#"><i class="fa fa-address-card" aria-hidden="true"></i> Gestion</a></li>
+      <li><a href="#"><i class="fa fa-phone-square" aria-hidden="true"></i>Contact</a></li>
+      <li><a href="#"><i class="fa fa-id-badge" aria-hidden="true"></i>Profil</a></li>
+      <li><a href="#"><i class="fa fa-user-circle-o" aria-hidden="true"></i>Vente</a></li>
+    </ul>
+    <div class="social_media">
+      <a href="#"><i class="fab fa-facebook"></i></a>
+      <a href="#"><i class="fab fa-instagram"></i></a>
+      <a href="#"><i class="fab fa-linkedin"></i></a>
+      <a href="#"><i class="fab fa-twitter"></i></a>
     </div>
+  </div>
+  <div class="main_content">
+    {% block content %}
+    <div class="header">Bienvenue !!</div>
+    <div class="button-group">
+  <a href="{% url 'sys_inventaire:medicament' %}" class="btn btn-primary btn-md" role="button">Medicaments</a>
+  <a href="{% url 'sys_inventaire:ajouter_medicament' %}" class="btn btn-warning btn-sm" role="button"> + </a>
+  <a href="{% url 'sys_inventaire:paraphamacies' %}" class="btn btn-primary btn-md" role="button">Parapharmacies</a>
+  <a href="{% url 'sys_inventaire:ajouter_parapharmacie' %}" class="btn btn-warning btn-sm" role="button"> + </a>
+  <a href="{% url 'sys_inventaire:pti_materiel' %}" class="btn btn-primary btn-md" role="button">Petits materiels</a>
+  <a href="{% url 'sys_inventaire:ajouter_petit_materiel' %}" class="btn btn-warning btn-sm" role="button"> + </a>
+  <a href="{% url 'sys_inventaire:dietetiques' %}" class="btn btn-primary btn-md" role="button">Diététiques</a>
+  <a href="{% url 'sys_inventaire:ajouter_dietetique' %}" class="btn btn-warning btn-sm" role="button"> + </a>
+</div><br>
+{% if header %}
+  
+  <div class="table">
+    <div class="table100 ver1 m-b-100">
+        <table>
+          <thead>
+            <tr class="row">
+                <th class="cell100 column2">#</th>
+                <th class="cell100 column1">Spécialité</th>
+                <th class="cell100 column3">D C I</th>
+                <th class="cell100 column4">prix</th>
+               <th class="cell100 column5">Quantité</th>
+              </tr>
+          </thead>
+        </table>
+    </div>
+     
+   
+    {% for item in items %}
+    <div class="table" >
+      <div class="table100-body js-pscroll">
+        <table>
+          <tbody>
+            <tr class="row">
+              <td class="cell100 column2">{{ item.pk }}</td>
+              <td class="cell100 column1">{{ item.specialite }}</td>
+              <td class="cell100 column3">{{ item.dci }}</td>
+              <td class="cell100 column4">{{ item.prix }}</td>
+              <td class="cell100 column5">{{ item.quantite }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     
-</section>
-{% endblock %}
+    </div>
+  </div> 
+  {% endfor %}                        
+  {% else %}
+  <div class="table">
+    <div class="table100 ver1 m-b-100">
+      <table>
+        <thead>
+          <tr class="row">
+            <th class="cell100 column2">#</th>
+            <th class="cell100 column1">Spécialité</th>
+            <th class="cell100 column3">prix</th>
+            <th class="cell100 column4">Quantité</th>
+            <th class="cell100 column5">Date péremption</th>
+          </tr>
+        </thead>
+      </table>
+    </div> 
+  {% for item in items %}
+  <div class="table" >
+    <div class="table100-body js-pscroll" >
+      <table>
+      <tbody>
+        <tr class="row">
+          <td class="cell100 column2">{{ item.pk }}</td>
+          <td class="cell100 column1">{{ item.nom_article }}</td>
+          <td class="cell100 column3">{{ item.prix }}</td>
+          <td class="cell100 column4">{{ item.quantite }}</td>
+          <td class="cell100 column5">{{ item.date_peremption }}</td>
+        </tr>
+      </tbody>
+    </table>
+    </div>    
+  </div>
+</div> 
+{% endfor %}
+{% endif %}
+
+  </div>
+</div>
+<div>
+  <br>
+  {% endblock %}    
+
+</body>
+</html>

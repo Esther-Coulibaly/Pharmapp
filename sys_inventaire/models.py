@@ -61,5 +61,3 @@ class Article(models.Model):
 
 class Medicament(Article): 
     pass 
-
-

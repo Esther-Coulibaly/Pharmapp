@@ -128,3 +128,7 @@ header .logo a {
     transition: all .3s;
 }
 
+.card .row .cell100{
+    color: teal;
+    padding: 15px;
+}
