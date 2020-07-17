@@ -41,6 +41,9 @@
   <a href="{% url 'sys_inventaire:ajouter_dietetique' %}" class="btn btn-warning btn-sm" role="button"> + </a>
 </div><br>
 {% if header %}
+<center>
+  <h4>Vous voyez actuellement Medicament </h4>
+</center>
   
   <div class="table">
     <div class="table100 ver1 m-b-100">
@@ -58,26 +61,35 @@
     </div>
      
    
-    {% for item in items %}
+    
     <div class="table" >
       <div class="table100-body js-pscroll">
         <table>
           <tbody>
+            {% for item in items %}
             <tr class="row">
               <td class="cell100 column2">{{ item.pk }}</td>
               <td class="cell100 column1">{{ item.specialite }}</td>
               <td class="cell100 column3">{{ item.dci }}</td>
               <td class="cell100 column4">{{ item.prix }}</td>
               <td class="cell100 column5">{{ item.quantite }}</td>
+              <td>
+                <a href="{% url 'sys_inventaire:modifier_medicament' item.pk %}" class="btn btn-warning btn-sm" role="button">Modifier</a>
+              </td>
             </tr>
+            {% endfor %} 
           </tbody>
         </table>
       </div>
     
     </div>
   </div> 
-  {% endfor %}                        
+                         
   {% else %}
+  <center>
+     <h4>Vous voyez actuellement {{ titre }} </h4>
+  </center>
+ 
   <div class="table">
     <div class="table100 ver1 m-b-100">
       <table>
@@ -92,24 +104,39 @@
         </thead>
       </table>
     </div> 
-  {% for item in items %}
+  
   <div class="table" >
     <div class="table100-body js-pscroll" >
       <table>
       <tbody>
+        {% for item in items %}
         <tr class="row">
           <td class="cell100 column2">{{ item.pk }}</td>
           <td class="cell100 column1">{{ item.nom_article }}</td>
           <td class="cell100 column3">{{ item.prix }}</td>
           <td class="cell100 column4">{{ item.quantite }}</td>
           <td class="cell100 column5">{{ item.date_peremption }}</td>
+          {% if titre|lower == "parapharmacie" %}
+          <td>
+            <a href="{% url 'sys_inventaire:modifier_parapharmacie' item.pk %}" class="btn btn-warning btn-sm" role="button">Modifier</a>
+          </td>
+          {% elif titre|lower == "petit matériel" %}
+          <td>
+            <a href="{% url 'sys_inventaire:modifier_petit_materiel' item.pk %}" class="btn btn-warning btn-sm" role="button">Modifier</a>
+          </td>
+          {% else %}
+          <td>
+            <a href="{% url 'sys_inventaire:modifier_dietetique' item.pk %}" class="btn btn-warning btn-sm" role="button">Modifier</a>
+          </td>
+          {% endif %}
         </tr>
+        {% endfor %}
       </tbody>
     </table>
     </div>    
   </div>
 </div> 
-{% endfor %}
+
 {% endif %}
 
   </div>
