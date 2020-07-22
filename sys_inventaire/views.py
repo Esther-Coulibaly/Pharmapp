@@ -88,3 +88,44 @@ def modifier_parapharmacie(request, pk):
 
 def modifier_petit_materiel(request, pk):
     return modifier_article(request, pk, Petit_matériel, Petit_matérielForm)
+
+
+def supprimer_medicament(request, pk):
+    Medicament.objects.filter(id=pk).delete()
+    items = Medicament.objects.all()
+    context = {
+        'items': items
+    }
+    return render(request, 'inventory.html', context)
+
+def supprimer_medicament(request, pk):
+    Medicament.objects.filter(id=pk).delete()
+    items = Medicament.objects.all()
+    context = {
+        'items': items
+    }
+    return render(request, 'inventory.html', context)
+
+def supprimer_parapharmatie(request, pk):
+    Parapharmatie.objects.filter(id=pk).delete()
+    items = Parapharmatie.objects.all()
+    context = {
+        'items': items
+    }
+    return render(request, 'inventory.html', context)
+
+def supprimer_dietetique(request, pk):
+    Dietetique.objects.filter(id=pk).delete()
+    items = Dietetique.objects.all()
+    context = {
+        'items': items
+    }
+    return render(request, 'inventory.html', context)
+
+def supprimer_petit_matériel(request, pk):
+    Petit_matériel.objects.filter(id=pk).delete()
+    items = Petit_matériel.objects.all()
+    context = {
+        'items': items
+    }
+    return render(request, 'inventory.html', context)

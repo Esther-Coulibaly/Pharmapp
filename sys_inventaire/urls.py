@@ -21,4 +21,10 @@ urlpatterns = [
     path('modifierpar/<int:pk>', modifier_parapharmacie, name='modifier_parapharmacie'),
     path('modifierpetitmateriel/<int:pk>/', modifier_petit_materiel, name='modifier_petit_materiel'),
     path('modifierdietetique/<int:pk>/', modifier_dietetique, name='modifier_dietetique'),
+    
+    # La suppression particuliere des articles 
+    path('supprimerMedicament/<int:pk>/', supprimer_medicament, name='supprimer_medicament'),
+    path('supprimerParapharmatie/<int:pk>/', supprimer_parapharmatie, name='supprimer_parapharmatie'),
+    path('supprimerDietetique/<int:pk>/', supprimer_dietetique, name='supprimer_dietetique'),
+    path('supprimerPetitmatieriel/<int:pk>/', supprimer_petit_matériel, name='supprimer_petit_matériel')
 ]

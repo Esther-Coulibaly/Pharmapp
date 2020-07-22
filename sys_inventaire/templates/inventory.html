@@ -51,10 +51,11 @@
           <thead>
             <tr class="row">
                 <th class="cell100 column2">#</th>
-                <th class="cell100 column1">Spécialité</th>
+                <th class="cell100 column2">Spécialité</th>
                 <th class="cell100 column3">D C I</th>
                 <th class="cell100 column4">prix</th>
-               <th class="cell100 column5">Quantité</th>
+                <th class="cell100 column5">Quantité</th>
+                <th class="cell100 column4">Options</th>
               </tr>
           </thead>
         </table>
@@ -69,12 +70,15 @@
             {% for item in items %}
             <tr class="row">
               <td class="cell100 column2">{{ item.pk }}</td>
-              <td class="cell100 column1">{{ item.specialite }}</td>
+              <td class="cell100 column2">{{ item.specialite }}</td>
               <td class="cell100 column3">{{ item.dci }}</td>
               <td class="cell100 column4">{{ item.prix }}</td>
               <td class="cell100 column5">{{ item.quantite }}</td>
               <td>
-                <a href="{% url 'sys_inventaire:modifier_medicament' item.pk %}" class="btn btn-warning btn-sm" role="button">Modifier</a>
+                <a href="{% url 'sys_inventaire:modifier_medicament' item.pk %}" class="btn btn-warning btn-sm" role="button"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+              </td>
+              <td>
+                <a href="{% url 'sys_inventaire:supprimer_medicament' item.pk %}" class="btn btn-warning btn-sm" role="button"><i class="fa fa-trash" aria-hidden="true"></i></a>
               </td>
             </tr>
             {% endfor %} 
@@ -95,11 +99,12 @@
       <table>
         <thead>
           <tr class="row">
-            <th class="cell100 column2">#</th>
-            <th class="cell100 column1">Spécialité</th>
+            <th>#</th>
+            <th class="cell100 column2">Spécialité</th>
             <th class="cell100 column3">prix</th>
             <th class="cell100 column4">Quantité</th>
             <th class="cell100 column5">Date péremption</th>
+            <th class="cell100 column4">Options</th>
           </tr>
         </thead>
       </table>
@@ -112,21 +117,30 @@
         {% for item in items %}
         <tr class="row">
           <td class="cell100 column2">{{ item.pk }}</td>
-          <td class="cell100 column1">{{ item.nom_article }}</td>
+          <td class="cell100 column2">{{ item.nom_article }}</td>
           <td class="cell100 column3">{{ item.prix }}</td>
           <td class="cell100 column4">{{ item.quantite }}</td>
           <td class="cell100 column5">{{ item.date_peremption }}</td>
           {% if titre|lower == "parapharmacie" %}
           <td>
-            <a href="{% url 'sys_inventaire:modifier_parapharmacie' item.pk %}" class="btn btn-warning btn-sm" role="button">Modifier</a>
+            <a href="{% url 'sys_inventaire:modifier_parapharmacie' item.pk %}" class="btn btn-warning " role="button"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+          </td>
+          <td>
+            <a href="{% url 'sys_inventaire:supprimer_parapharmatie' item.pk %}" class="btn btn-warning " role="button"><i class="fa fa-trash" aria-hidden="true"></i></a>
           </td>
           {% elif titre|lower == "petit matériel" %}
           <td>
-            <a href="{% url 'sys_inventaire:modifier_petit_materiel' item.pk %}" class="btn btn-warning btn-sm" role="button">Modifier</a>
+            <a href="{% url 'sys_inventaire:modifier_petit_materiel' item.pk %}" class="btn btn-warning btn-sm" role="button"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+          </td>
+          <td>
+            <a href="{% url 'sys_inventaire:supprimer_petit_matériel' item.pk %}" class="btn btn-warning btn-sm" role="button"><i class="fa fa-trash" aria-hidden="true"></i></a>
           </td>
           {% else %}
           <td>
-            <a href="{% url 'sys_inventaire:modifier_dietetique' item.pk %}" class="btn btn-warning btn-sm" role="button">Modifier</a>
+            <a href="{% url 'sys_inventaire:modifier_dietetique' item.pk %}" class="btn btn-warning btn-sm" role="button"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+          </td>
+          <td>
+            <a href="{% url 'sys_inventaire:supprimer_dietetique' item.pk %}" class="btn btn-warning btn-sm" role="button"><i class="fa fa-trash" aria-hidden="true"></i></a>
           </td>
           {% endif %}
         </tr>
